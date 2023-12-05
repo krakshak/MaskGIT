@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<title>Your Project Name</title>
+<title>MaskGIT: Masked Generative Image Transformer</title>
 <meta property="og:title" content=MaskGIT: Masked Generative Image Transformer" />
 <meta name="twitter:title" content="MaskGIT: Masked Generative Image Transformer" />
 <meta name="description" content="Your project about your cool topic described right here." />
@@ -17,13 +17,44 @@
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
 <link href="style.css" rel="stylesheet">
 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        border: 1px solid #233BF5;
+        padding: 8px;
+        text-align: center;
+    }
+
+    td:last-child {
+            text-align: left;
+        }
+
+    th {
+        background-color: #233BF5;
+        color: white;
+    }
+
+    .author-image {
+        max-width: 200px;
+        max-height: 150px;
+        border-radius: 95%;
+    }
+</style>
+
 </head>
+
 <body class="nd-docs">
 <div class="nd-pageheader">
  <div class="container">
  <h1 class="lead">
  <nobr class="widenobr">MaskGIT: Masked Generative Image Transformer</nobr>
- <nobr class="widenobr">For CS 7150</nobr>
  </h1>
  </div>
 </div><!-- end nd-pageheader -->
@@ -37,27 +68,246 @@
 </div>
 <div class="row">
 <div class="col">
+  
 
-<h2>Literature Review; Biography; Social Impact; Industry Applications; Follow-on Research; and Peer-Review</h2>
+  
+<h2> Biography</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Author</th>
+            <th>Image</th>
+            <th>Affiliation</th>
+            <th>Contribution/Education</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Huiwen Chang</td>
+            <td><img src="images/Huiwen Chang.png" alt="Huiwen Chang" class="author-image"></td>
+            <td>Google Research</td>
+            <td><ul><li>Computer science researcher focused on image processing, currently at OpenAI and previously worked at Google, Adobe, and Facebook.</li>
+              <li>Ph.D. from Princeton University.</li></ul></td>
+        </tr>
+        <tr>
+            <td>Han Zhang</td>
+            <td><img src="images/Han Zhang.png" alt="Han Zhang" class="author-image"></td>
+            <td>Google Research</td>
+            <td><ul><li>Research Scientist at Google DeepMind with a Ph.D. in Computer Science from Rutgers University. </li>
+              <li>Internships at Google Brain, OpenAI, Facebook, Philips Research North America, and the Lab of Media Search at NUS, Singapore. </li>
+              <li>Interests are computer vision, deep learning, and medical image analysis.</li></ul></td>
+        </tr>
+        <tr>
+            <td>Lu Jiang</td>
+            <td><img src="images/Lu Jiang.png" alt="Lu Jiang" class="author-image"></td>
+            <td>Google Research</td>
+            <td><ul><li>Research scientist and manager at Google Research. Adjunct faculty member at Carnegie Mellon University. </li>
+              <li>Known for his significant contributions to natural language processing and computer vision. </li>
+              <li> Chair of  NeurIPS 2023.</li></ul></td>
+        </tr>
+        <tr>
+            <td>Ce Liu</td>
+            <td><img src="images/Ce Liu.png" alt="Ce Liu" class="author-image"></td>
+            <td>Microsoft Azure AI</td>
+            <td><ul><li>Chief Architect at Microsoft. Ex - Google.</li>
+              <li>IEEE Fellow.</li>
+              <li>Ph.D. from MIT.</li></ul></td>
+        </tr>
+        <tr>
+            <td>William T. Freeman</td>
+            <td><img src="images/William T. Freeman.png" alt="William T. Freeman" class="author-image"></td>
+            <td>MIT</td>
+            <td><ul><li>Professor of electrical engineering and computer science at  MIT.  </li>
+              <li>Research interests include machine learning applied to computer vision. </li>
+              <li> Degree in Stanford University in 1979, and his Ph.D. from MIT in 1992.</li></ul></td>
+        </tr>
+    </tbody>
+</table>
 
-<p>Just as we have done in the role-playing exercise, analyze the paper from all perspectives.
-</p>
+<h2>Literature Review/Previous Work</h2>
 
-<p>Optionally, in addition to a reading-based analysis, implement the ideas of the paper in code, and report on your findings.
-</p>
+<img src="images/transformer.webp" alt="Transformer" class="center" style="width: 15vw; min-width: 330px;"><br>
+
+<ul>
+  <li><b>Transformers:</b> A novel, simple network architecture based solely on an attention mechanism. Inspired by the success of Transformer and GPT in NLP, generative transformer 
+    models have received growing interests in image synthesis. <br>
+    <u>Reference paper:</u> Vaswani, Ashish, et al. <a href="https://proceedings.neurips.cc/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf">"Attention is all you need."</a>
+    <i>Advances in neural information processing systems</i> 30 (2017).<br><br>
+  </li>
+
+  <li><b>BERT(Bidirectional Transformers):</b> Bidirectional Encoder Representations from Transformers. BERT was designed to pre-train deep bidirectional representations from unlabeled 
+    text by jointly conditioning on both left and right context in all layers. The masked modeling in BERT was extended to image representation learning with images quantized to discrete 
+    tokens.<br>
+    <u>Reference paper:</u> Devlin, Jacob, et al. <a href="https://arxiv.org/pdf/1810.04805.pdf&usg=ALkJrhhzxlCL6yTht2BRmH9atgvKFxHsxQ">"Bert: Pre-training of deep bidirectional 
+      transformers for language understanding."</a> <i> preprint arXiv:1810.04805 </i> (2018).<br><br>
+  </li>
+
+  <li><b>Mask Predict:</b> A masked language modeling objective to train a model to predict any subset of the target words, conditioned on both the input text and a partially masked target 
+    translation. This approach allows for efficient iterative decoding. The authors were inspired by the bi-directional machine translation in NLP. They explain the novelty lies in the 
+    proposed new masking strategy and the decoding algorithm.<br>
+    <u>Reference paper:</u> Ghazvininejad, Marjan, et al. <a href="https://arxiv.org/pdf/1904.09324">"Mask-predict: Parallel decoding of 
+      conditional masked language models."</a> <i> arXiv preprint arXiv:1904.09324 </i> (2019).<br><br>
+  </li>
+
+  <li><b>VQGAN (Vector quantized GAN):</b> The convolutional VQGAN to combine both the efficiency of convolutional approaches with the expressive power of transformers, and to combine 
+    adversarial with likelihood training in a perceptually meaningful way. The VQGAN learns a codebook of context-rich visual parts, whose composition is then modeled with an autoregressive 
+    transformer.<br>
+    <u>Reference paper:</u> Esser, Patrick, Robin Rombach, and Bjorn Ommer.  <a href="http://openaccess.thecvf.com/content/CVPR2021/papers/Esser_Taming_Transformers_for_High-Resolution_Image_Synthesis_CVPR_2021_paper.pdf">
+      "Taming transformers for high-resolution image synthesis."</a> <i> Proceedings of the IEEE/CVF conference on computer vision and pattern recognition. </i> (2021).<br>
+  </li>
+</ul>
+
+<h2>Methodology</h2>
+
+This paper introduces a new bidirectional transformer for image synthesis called Masked Generative Image Transformer (MaskGIT). During training, MaskGIT is trained on
+a similar proxy task to the mask prediction in BERT. At inference time, MaskGIT adopts a novel non-autoregressive decoding method to synthesize an image in constant number of steps. <br><br>
+
+<h4>Sequential decoding vs MaskGIT's scheduled parallel decoding</h4>
+
+<img src="images/seq vs parallel decoding.png" alt="Sequential decoding" class="center" style="width: 40vw; min-width: 330px;"><br>
+
+<ul><li><b> Latent Masks (Rows 1 and 3):</b> These rows shows the latent masks used by the model. Initially, all codes are unknown(lighter gray), representing areas of the image yet to be filled. </li>
+<li><b>Samples (Rows 2 and 4):</b> Here, we see the images as they are progressively constructed. MASKGIT fills up the latent representation with more and more scattered predictions 
+in parallel (darker gray areas), as opposed to the sequential, line-by-line approach.</li></ul>
+
+A key takeaway is MaskGIT's speed. It completes the decoding in just 8 iterations, whereas the sequential method took 256 rounds. This efficiency is due to its non-autoregressive decoding 
+where at each iteration, the model predicts all tokens simultaneously in parallel but only keeps the most confident ones. The remaining tokens are masked out and will be re-predicted in 
+the next iteration.<br>
+
+Unlike the sequential approach, MaskGIT uses bidirectional self-attention, enabling it to generate new tokens from all directions. This not only speeds up the process but also enhances the 
+quality of image generation. <br><br>
+
+
+<h4>Architecture/Pipeline of MaskGIT: Masked Generative Image Transformer</h4>
+
+<img src="images/architecture.png" alt="MaskGIT Architecture"class="center" style="width: 40vw; min-width: 330px;">
+
+MaskGIT follows a two-stage design: 
+
+<ul><li> <b>Tokenization:</b> The first stage involves a tokenizer, similar to the one used in the VQGAN model. This tokenizer converts images into a series of visual tokens, essentially breaking 
+  down the image into smaller, manageable pieces for processing.</li>
+<li><b>Masked Visual Token Modeling (MVTM):</b> A bidirectional transformer predicts and refines these tokens in parallel, using a naval approach that masks and unmasks parts of the image 
+iteratively to generate the final image efficiently.</li></ul>
+
+The decoding algorithm synthesizes an image in T steps. At each iteration, the model predicts all tokens simultaneously but only keeps the most confident ones. The remaining tokens are 
+masked out and re-predicted in the next iteration. Various functions (linear, concave, convex) are considered for mask scheduling, with empirical results showing the cosine function as the 
+most effective. <br><br>
+
+
+<h4>Masking Tokens</h4>
+
+An intriguing aspect of MaskGIT's process is its method for deciding which tokens to mask in each iteration. This is given by the formula:
+<img src="images/mask formula.png" alt="Masking Tokens" class="center" style="width: 25vw; min-width: 330px;"><br>
+
+
+<ul><li> <b>m<sub>i</sub><sup>(t+1)</sup></b>: This represents whether the i-th token will be masked in the next iteration (t+1).</li>
+<li><b>c<sub>i</sub></b>: The confidence score for the i-th token in the current iteration. It reflects how certain the model is about its prediction for this token.</li>
+<li>If the confidence score is lower than the threshold, it gets masked in the next iteration. If it is higher, then the token remains unmasked. </li></ul><br>
+
+<h4> Quantative Comparison of MaskGIT with state-of-the-art generative models</h4>
+
+<img src="images/comparison.png" alt="Quantative Comparison" class="center" style="width: 40vw; min-width: 330px;"><br>
+
+The above table provides a detailed comparison of MASKGIT's performance against other models. 
+
+<ul><li><b>Distance (FID)</b>: MASKGIT shows a lower FID compared to geneartive models, lower FID(6.16 vs 15.78) against VQGAN indicated better image quality. </li>
+  <li><b>Inception Score (IS)</b>: MASKGIT also leads in the IS, scoring 182.1 against VQGAN's 78.3, so there is better diversity and clarity in the generated images.</li>
+  <li><b>Speed Comparison</b>: The table also illustrated how MASKGIT requires fewer number of steps(forward passed) to generate an image. MaskGIT significantly accelerates VQGAN by 30-64x.</li>
+  <li><b>Classification Accuracy Score (CAS)</b>: MASKGit sets a new benchmark on the ImageNet dataset for both 256x256 and 512x512 resolutions.</li>
+  <li><b>Precision and Recall</b>: It shows improved recall compared to BigGAN, which indicates the broader coverage in image generation.</li></ul><br>
+
+
+
+<h4>Applications of MASKGit:</h4>
+
+<img src="images/applications.png" alt="Applications of MASKGit" class="center" style="width: 40vw; min-width: 330px;"><br>
+
+<ul><li> Synthesis (Left Column): Demonstrating MaskGIT's ability to generate detailed images from specific categories.</li>
+<li>Class-Conditional Image Manipulation (Middle Column): Here, MaskGIT exhibits its skill in altering existing images, replacing objects within a bounding box with alternatives from chosen 
+classes.</li>
+<li>Image Extrapolation (Right Column): The model extends images beyond their original boundaries, adding coherent and contextually fitting content.</li></ul>
+
+
+<h2>Social Impact</h2> 
+
+<h4>Positive Societal Impacts:</h4>
+<ul><li>MASKGit have wide-ranging societal impacts on society, enhancing online experiences with personalized content, fostering creative expression, 
+and advancing healthcare with more accurate diagnostics. </li>
+<li>Can benefit education, cultural heritage preservation, and language translation, ultimately making digital content, creativity, healthcare, education, and cultural 
+engagement more accessible and meaningful to people in their everyday lives.</li></ul>
+
+<h4>Negative Societal Impacts:</h4>
+<ul><li>This model has the potential for negative societal impacts, including the creation of deepfake content that spreads misinformation and threatens privacy, 
+security vulnerabilities through the generation of fake biometric data, invasions of privacy through enhanced surveillance, manipulation of online content and ethical and legal 
+challenges regarding responsible use and regulation. </li>
+<li>The psychological and mental health impacts of highly convincing fake content can lead to confusion and distress.</li></ul>
+
+<h4>Advice for policy makers:</h4>
+<ul><li>Develop ethical frameworks that outline the responsible use of these technologies.</li>
+<li>Promote education, awareness and transparency about the capabilities and use of these technologies.</li>
+<li>Stricter enforcement of intellectual property rights and cybersecurity measures.</li></ul><br>
+
+
+<h2>Industry Applications</h2> 
+
+
+<h2>Follow-on Research</h2>
+
+
+<h2>Peer-Review</h2>
+
+<h4>Strengths</h4>
+
+<h4>Weaknesses</h4>
+
+Does not discuss ethical considerations
+
+<br><br>
 
 <h3>References</h3>
 
-<p><a name="bottou-1990">[1]</a> <a href="https://papers.baulab.info/Bottou-1990.pdf"
-  >L&eacute;on Bottou and Patrick Gallinari.
-  <em>A framework for the cooperation of learning algorithms.</em></a>
-  Advances in neural information processing systems 3 (1990).
+<p><a>[1]</a> <a href="https://proceedings.neurips.cc/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf"
+  >Vaswani, Ashish, et al.
+  <em>Attention is all you need.</em></a>
+  Advances in neural information processing systems 30 (2017).
 </p>
+
+<p><a>[2]</a> <a href="https://arxiv.org/pdf/1810.04805.pdf&usg=ALkJrhhzxlCL6yTht2BRmH9atgvKFxHsxQ"
+  >Devlin, Jacob, et al.
+  Bert: Pre-training of deep bidirectional transformers for language understanding.</em></a>
+  preprint arXiv:1810.04805 (2018).
+</p>
+
+<p><a>[3]</a> <a href="https://arxiv.org/pdf/1904.09324"
+  >Ghazvininejad, Marjan, et al.
+  Mask-predict: Parallel decoding of conditional masked language models."</em></a>
+  arXiv preprint arXiv:1904.09324 (2019).
+</p>
+
+<p><a>[4]</a> <a href="http://openaccess.thecvf.com/content/CVPR2021/papers/Esser_Taming_Transformers_for_High-Resolution_Image_Synthesis_CVPR_2021_paper.pdf"
+  >Esser, Patrick, Robin Rombach, and Bjorn Ommer.
+  Taming transformers for high-resolution image synthesis.</em></a>
+  Proceedings of the IEEE/CVF conference on computer vision and pattern recognition. (2021).
+</p>
+
+<p><a>[5]</a> <a href="https://proceedings.neurips.cc/paper/2017/file/7a98af17e63a0ac09ce2e96d03992fbc-Paper.pdf"
+  >Aaron van den Oord, Oriol Vinyals, and Koray Kavukcuoglu.
+  Neural discrete representation learning..</em></a>
+  NeurIPS, 2017.
+</p>
+
+<p><a>[6]</a> <a href="https://proceedings.neurips.cc/paper_files/paper/2019/file/5f8e2fa1718d1bbcadf1cd9c7a54fb8c-Supplemental.zip"
+  >Ali Razavi, Aaron van den Oord, and Oriol Vinyals.
+  Generating diverse high-fidelity images with VQVAE-2.</em></a>
+  NeurIPS, 2019.
+</p>
+
+
 
 <h2>Team Members</h2>
                                                    
-<p>Rakshak Kunchum</p>
-<p>Deepak Udayakumar</p>
+<ol><li><p><a href="https://krakshak.github.io/"> Rakshak Kunchum</a></p></li>
+<p><li><a href=""> Deepak Udayakumar </a></p></li></ol>
 
   
 </div><!--col-->
