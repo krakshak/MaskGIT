@@ -63,7 +63,18 @@
 <div class="row">
 <div class="col justify-content-center text-center">
 <h2>An Analysis of MaskGIT: Masked Generative Image Transformer</h2>
-<p>Describe the paper and the big question about it that interests you.</p>
+<h5> MaskGIT: Where pixels play hide and seek, and the bidirectional decoder always wins the game!</h5>
+<figure>
+<img src="images/intro.png" alt="MaskGIT: Masked Generative Image Transformer" class="center" style="width: 50vw; min-width: 330px;">
+<div class="caption">Figure 1: Bidirectional sampling</div>
+</figure>
+<p> The significance of this paper lies in its approach to image synthesis, which deviates from the conventional token-by-token sequential generation of images. Instead, 
+  it introduces a bidirectional transformer decoder called MaskGIT, which, during training, learns to predict randomly masked tokens by considering information from all directions. 
+  This approach not only promises more efficient image synthesis but also the potential for significantly improved image quality.</p>
+<p>The paper demonstrates that MaskGIT outperforms the current state-of-the-art transformer models on the ImageNet dataset. Additionally, the paper highlights a remarkable achievement 
+  in accelerating autoregressive decoding by up to 64 times where all tokens in the image are generated simultaneously in parallel. This is feasible due to the bi-directional self-attention 
+  of MTVM (Masked Visual Token Modeling) training. This breakthrough in efficiency could have a substantial impact enabling faster computations. Moreover, the paper showcases the 
+  versatility of MaskGIT by demonstrating its application in various image editing tasks, including inpainting, extrapolation, and image manipulation.</p>
 </div>
 </div>
 <div class="row">
@@ -128,7 +139,7 @@
 
 <figure>
 <img src="images/transformer.webp" alt="Transformer" class="center" style="width: 15vw; min-width: 330px;">
-<div class="caption">Figure 1: Transformer Architecture</div>
+<div class="caption">Figure 2: Transformer Architecture</div>
 </figure>
 
 <ul>
@@ -152,7 +163,7 @@
       conditional masked language models."</a> <i> arXiv preprint arXiv:1904.09324 </i> (2019).<br><br>
   </li>
 
-  <li><b>VQGAN (Vector quantized GAN):</b> The convolutional VQGAN to combine both the efficiency of convolutional approaches with the expressive power of transformers, and to combine 
+  <li><b>VQGAN (Vector quantized GAN):</b> The paper proposes a convolutional VQGAN to combine both the efficiency of convolutional approaches with the expressive power of transformers, and to combine 
     adversarial with likelihood training in a perceptually meaningful way. The VQGAN learns a codebook of context-rich visual parts, whose composition is then modeled with an autoregressive 
     transformer.<br>
     <u>Reference paper:</u> Esser, Patrick, Robin Rombach, and Bjorn Ommer.  <a href="http://openaccess.thecvf.com/content/CVPR2021/papers/Esser_Taming_Transformers_for_High-Resolution_Image_Synthesis_CVPR_2021_paper.pdf">
@@ -168,8 +179,8 @@ a similar proxy task to the mask prediction in BERT. At inference time, MaskGIT 
 <h4>Sequential decoding vs MaskGIT's scheduled parallel decoding</h4>
 
 <figure>
-<img src="images/seq vs parallel decoding.png" alt="Sequential decoding" class="center" style="width: 40vw; min-width: 330px;">
-<div class="caption">Figure 2: Sequential vs Parallel Decoding</div>
+<img src="images/seq vs parallel decoding.png" alt="Sequential decoding" class="center" style="width: 37vw; min-width: 330px;">
+<div class="caption">Figure 3: Sequential vs Parallel Decoding</div>
 </figure>
 
 <ul><li><b> Latent Masks (Rows 1 and 3):</b> These rows shows the latent masks used by the model. Initially, all codes are unknown(lighter gray), representing areas of the image yet to be filled. </li>
@@ -187,8 +198,8 @@ quality of image generation. <br><br>
 <h4>Architecture/Pipeline of MaskGIT: Masked Generative Image Transformer</h4>
 
 <figure>
-<img src="images/architecture.png" alt="MaskGIT Architecture"class="center" style="width: 40vw; min-width: 330px;">
-<div class="caption">Figure 3: MASKGit Architecture Pipeline</div>
+<img src="images/architecture.png" alt="MaskGIT Architecture"class="center" style="width: 35vw; min-width: 330px;">
+<div class="caption">Figure 4: MASKGit Architecture Pipeline</div>
 </figure>
 
 MaskGIT follows a two-stage design: 
@@ -218,7 +229,7 @@ An intriguing aspect of MaskGIT's process is its method for deciding which token
 <h4> Quantative Comparison of MaskGIT with state-of-the-art generative models</h4>
 
 <figure>
-<img src="images/comparison.png" alt="Quantative Comparison" class="center" style="width: 40vw; min-width: 330px;"><br>
+<img src="images/comparison.png" alt="Quantative Comparison" class="center" style="width: 42vw; min-width: 330px;"><br>
 <div class="caption">Table 1: Quantitative comparison with state-of-the-art generative models on ImageNet 256*256 and 512*512.</div>
 </figure>
 
@@ -234,7 +245,7 @@ The above table provides a detailed comparison of MaskGIT's performance against 
 <h4>Applications of MaskGIT:</h4>
 
 <figure>
-<img src="images/applications.png" alt="Applications of MaskGIT" class="center" style="width: 40vw; min-width: 330px;"><br>
+<img src="images/applications.png" alt="Applications of MaskGIT" class="center" style="width: 42vw; min-width: 330px;"><br>
 <div class="caption">Figure 5: Applications of MaskGIT</div>
 </figure>
 
@@ -244,7 +255,7 @@ classes.</li>
 <li>Image Extrapolation (Right Column): The model extends images beyond their original boundaries, adding coherent and contextually fitting content.</li></ul>
 
 
-<h4>Choices of Mask Scheduling Functions</h4>
+<h4>Ablation Study: Choices of Mask Scheduling Functions</h4>
 
 <figure>
 <img src="images/abalation_study.png" alt="Choices of Mask Scheduling Functions" class="center" style="width: 40vw; min-width: 330px;">
@@ -262,7 +273,7 @@ not only scores the best overall but also reaches its peak performance earlier, 
 <h4>Positive Societal Impacts:</h4>
 <ul><li>MaskGIT have wide-ranging societal impacts on society, enhancing online experiences with personalized content, fostering creative expression, 
 and advancing healthcare with more accurate diagnostics. </li>
-<li>Can benefit education, cultural heritage preservation, and language translation, ultimately making digital content, creativity, healthcare, education, and cultural 
+<li>Can benefit education, cultural heritage preservation, making digital content, creativity, healthcare, education, and cultural 
 engagement more accessible and meaningful to people in their everyday lives.</li></ul>
 
 <h4>Negative Societal Impacts:</h4>
@@ -279,21 +290,65 @@ challenges regarding responsible use and regulation. </li>
 
 <h2>Industry Applications</h2> 
 
+<h4>Application of MaskGIT in Photoshop for Enhanced Image Editing</h4>
+
+<figure>
+<img src="images/industry_application.png" alt="Application of MaskGIT in Photoshop for Enhanced Image Editing" class="center" style="width: 18vw; min-width: 330px;">
+<div class="caption">Figure 7: Application of MaskGIT in Photoshop</div>
+</figure>
+<ul><li> MaskGIT could be integrated into Photoshop as a feature for automated image extrapolation. This would allow users to extend the borders of an image seamlessly, generating new 
+  content that matches the style and context of the original image.</li>
+<li>With its class-conditional manipulation capabilities, MaskGIT could be used to intelligently replace or alter objects within an image. For instance, users could select an object and 
+have MaskGIT replace it with a different object of the same class, maintaining the overall coherence of the image.</li>
+<li>MaskGIT could enhance Photoshop's existing inpainting tools by providing more context-aware and coherent fill options. This would be particularly useful for restoring old photos or 
+removing unwanted elements from images.</li>
+<li>MaskGIT's ability to generate high-quality, high-resolution images could be utilized in Photoshop for tasks that require enlarging images without losing detail or for creating large-format 
+designs.</li></ul><br>
+
 
 <h2>Follow-on Research</h2>
+
+<h4>Advanced Tokenization Techniques for Improved Image Synthesis</h4>
+
+<figure>
+  <img src="images/research.png" alt="Advanced Tokenization Techniques for Improved Image Synthesis" class="center" style="width: 52vw; min-width: 330px;">
+  <div class="caption">Figure 8: Advanced Tokenization Technique using Vision Transformer (ViT)</div>
+</figure>
+<ul><li>The authors mention that they employ the same tokenization technique as VQGAN. VQGAN applies vector quantization to the output of the GAN, which divides the continuous-valued image 
+into a fixed number of discrete codebook vectors.</li>
+<li>They also mention there is opportunity for potential improvements to the tokenization step to future work.</li>
+<li><u>Reference paper:</u> Yu, Jiahui, et al. <a href="https://arxiv.org/pdf/2110.04627">"Vector-quantized image modeling with improved vqgan"</a> <i>arXiv preprint arXiv:2110.04627</i> (2021).</li>
+<li> The authors of the above paper suggest taking this approach one step further by replacing both the CNN encoder and decoder with <b>Vision Transformer (ViT)</b> In addition, they introduce a linear projection 
+  from the output of the encoder to a low-dimensional latent variable space for lookup of the integer tokens.</li>
+</ul>
+
 
 
 <h2>Peer-Review</h2>
 
+The paper introduces MaskGIT, a bidirectional transformer model for image synthesis. The model excels in various tasks, including class-conditional image synthesis, manipulation, and 
+extrapolation. It showcases significant improvements over existing methods in terms of quality, speed, and diversity of generated images. The model's iterative decoding method enhances 
+efficiency, requiring fewer steps compared to traditional autoregressive methods, and its bidirectional self-attention mechanism allows for richer context utilization.
+
+<h4> Overall Score: 8.5/10 (Strong Accept)</h4>
+
 <h4>Strengths</h4>
+
+<ul><li>MaskGIT's parallel decoding approach is a groundbreaking improvement over traditional sequential methods, significantly accelerating the image generation process.</li>
+<li>The paper is technically sound with well-supported claims. The experiments demonstrate MaskGIT's superiority over existing models in terms of image quality and synthesis speed.</li>
+<li>The paper presents a thorough analysis of the output quality and diversity, substantiated by metrics like FID and IS.</li>
+<li>The paper successfully covers the application of the model to a range of tasks, highlighting its versatility. This includes class-conditional synthesis, image manipulation, and extrapolation.</li>
+<li>The paper explores the limitations of the proposed model, especially in complex or edge-case scenarios, which is crucial for a balanced understanding.</li>
+</ul>
 
 <h4>Weaknesses</h4>
 
-Does not discuss ethical considerations
+<ul><li>The paper could provide a more thorough discussion of the model's limitations, particularly in scenarios with highly complex or unusual images.</li>
+  <li>The paper does not discusses the model's potential for negative societal impacts and it could provide more details on how these impacts could be mitigated.</li>
+  <li>The discussion on the scalability of the model and its ability to generalize across various datasets is not adequately covered.</li><br><br>
 
-<br><br>
 
-<h3>References</h3>
+<h2>References</h2>
 
 <p><a>[1]</a> <a href="https://proceedings.neurips.cc/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf"
   >Vaswani, Ashish, et al.
@@ -329,6 +384,12 @@ Does not discuss ethical considerations
   >Ali Razavi, Aaron van den Oord, and Oriol Vinyals.
   Generating diverse high-fidelity images with VQVAE-2.</em></a>
   NeurIPS, 2019.
+</p>
+
+<p><a>[7]</a> <a href="https://arxiv.org/pdf/2110.04627"
+  >Yu, Jiahui, et al.
+  Vector-quantized image modeling with improved vqgan</em></a>
+  arXiv preprint arXiv:2110.04627
 </p>
 
 
