@@ -8,6 +8,11 @@ body, td, th {
   margin-right: auto;
   width: 50%;
 }
+
+.caption {
+  text-align: center;
+}
+
 h2 {
   margin-top: 3ex;
 }

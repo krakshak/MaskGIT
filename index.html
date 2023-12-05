@@ -126,7 +126,10 @@
 
 <h2>Literature Review/Previous Work</h2>
 
-<img src="images/transformer.webp" alt="Transformer" class="center" style="width: 15vw; min-width: 330px;"><br>
+<figure>
+<img src="images/transformer.webp" alt="Transformer" class="center" style="width: 15vw; min-width: 330px;">
+<div class="caption">Figure 1: Transformer Architecture</div>
+</figure>
 
 <ul>
   <li><b>Transformers:</b> A novel, simple network architecture based solely on an attention mechanism. Inspired by the success of Transformer and GPT in NLP, generative transformer 
@@ -164,7 +167,10 @@ a similar proxy task to the mask prediction in BERT. At inference time, MaskGIT 
 
 <h4>Sequential decoding vs MaskGIT's scheduled parallel decoding</h4>
 
-<img src="images/seq vs parallel decoding.png" alt="Sequential decoding" class="center" style="width: 40vw; min-width: 330px;"><br>
+<figure>
+<img src="images/seq vs parallel decoding.png" alt="Sequential decoding" class="center" style="width: 40vw; min-width: 330px;">
+<div class="caption">Figure 2: Sequential vs Parallel Decoding</div>
+</figure>
 
 <ul><li><b> Latent Masks (Rows 1 and 3):</b> These rows shows the latent masks used by the model. Initially, all codes are unknown(lighter gray), representing areas of the image yet to be filled. </li>
 <li><b>Samples (Rows 2 and 4):</b> Here, we see the images as they are progressively constructed. MASKGIT fills up the latent representation with more and more scattered predictions 
@@ -180,7 +186,10 @@ quality of image generation. <br><br>
 
 <h4>Architecture/Pipeline of MaskGIT: Masked Generative Image Transformer</h4>
 
+<figure>
 <img src="images/architecture.png" alt="MaskGIT Architecture"class="center" style="width: 40vw; min-width: 330px;">
+<div class="caption">Figure 3: MASKGit Architecture Pipeline</div>
+</figure>
 
 MaskGIT follows a two-stage design: 
 
@@ -197,8 +206,10 @@ most effective. <br><br>
 <h4>Masking Tokens</h4>
 
 An intriguing aspect of MaskGIT's process is its method for deciding which tokens to mask in each iteration. This is given by the formula:
-<img src="images/mask formula.png" alt="Masking Tokens" class="center" style="width: 25vw; min-width: 330px;"><br>
-
+<figure>
+<img src="images/mask formula.png" alt="Masking Tokens" class="center" style="width: 25vw; min-width: 330px;">
+<div class="caption">Formula 1: Mask generation function</div>
+</figure>
 
 <ul><li> <b>m<sub>i</sub><sup>(t+1)</sup></b>: This represents whether the i-th token will be masked in the next iteration (t+1).</li>
 <li><b>c<sub>i</sub></b>: The confidence score for the i-th token in the current iteration. It reflects how certain the model is about its prediction for this token.</li>
@@ -206,21 +217,26 @@ An intriguing aspect of MaskGIT's process is its method for deciding which token
 
 <h4> Quantative Comparison of MaskGIT with state-of-the-art generative models</h4>
 
+<figure>
 <img src="images/comparison.png" alt="Quantative Comparison" class="center" style="width: 40vw; min-width: 330px;"><br>
+<div class="caption">Table 1: Quantitative comparison with state-of-the-art generative models on ImageNet 256*256 and 512*512.</div>
+</figure>
 
-The above table provides a detailed comparison of MASKGIT's performance against other models. 
+The above table provides a detailed comparison of MaskGIT's performance against other models. 
 
-<ul><li><b>Distance (FID)</b>: MASKGIT shows a lower FID compared to geneartive models, lower FID(6.16 vs 15.78) against VQGAN indicated better image quality. </li>
-  <li><b>Inception Score (IS)</b>: MASKGIT also leads in the IS, scoring 182.1 against VQGAN's 78.3, so there is better diversity and clarity in the generated images.</li>
-  <li><b>Speed Comparison</b>: The table also illustrated how MASKGIT requires fewer number of steps(forward passed) to generate an image. MaskGIT significantly accelerates VQGAN by 30-64x.</li>
-  <li><b>Classification Accuracy Score (CAS)</b>: MASKGit sets a new benchmark on the ImageNet dataset for both 256x256 and 512x512 resolutions.</li>
+<ul><li><b>Distance (FID)</b>: MaskGIT shows a lower FID compared to geneartive models, lower FID(6.16 vs 15.78) against VQGAN indicated better image quality. </li>
+  <li><b>Inception Score (IS)</b>: MaskGIT also leads in the IS, scoring 182.1 against VQGAN's 78.3, so there is better diversity and clarity in the generated images.</li>
+  <li><b>Speed Comparison</b>: The table also illustrated how MaskGIT requires fewer number of steps(forward passed) to generate an image. MaskGIT significantly accelerates VQGAN by 30-64x.</li>
+  <li><b>Classification Accuracy Score (CAS)</b>: MaskGIT sets a new benchmark on the ImageNet dataset for both 256x256 and 512x512 resolutions.</li>
   <li><b>Precision and Recall</b>: It shows improved recall compared to BigGAN, which indicates the broader coverage in image generation.</li></ul><br>
 
 
+<h4>Applications of MaskGIT:</h4>
 
-<h4>Applications of MASKGit:</h4>
-
-<img src="images/applications.png" alt="Applications of MASKGit" class="center" style="width: 40vw; min-width: 330px;"><br>
+<figure>
+<img src="images/applications.png" alt="Applications of MaskGIT" class="center" style="width: 40vw; min-width: 330px;"><br>
+<div class="caption">Figure 5: Applications of MaskGIT</div>
+</figure>
 
 <ul><li> Synthesis (Left Column): Demonstrating MaskGIT's ability to generate detailed images from specific categories.</li>
 <li>Class-Conditional Image Manipulation (Middle Column): Here, MaskGIT exhibits its skill in altering existing images, replacing objects within a bounding box with alternatives from chosen 
@@ -228,10 +244,23 @@ classes.</li>
 <li>Image Extrapolation (Right Column): The model extends images beyond their original boundaries, adding coherent and contextually fitting content.</li></ul>
 
 
+<h4>Choices of Mask Scheduling Functions</h4>
+
+<figure>
+<img src="images/abalation_study.png" alt="Choices of Mask Scheduling Functions" class="center" style="width: 40vw; min-width: 330px;">
+<div class="caption">Figure 6: Choices of Mask Scheduling Functions</div>
+</figure>
+
+The figure shows seven different functions considered for the mask scheduling function (&gamma;). These functions are visually represented, providing an intuitive understanding of how each function 
+determines the mask ratio during the model's training and decoding phases. Among these, the cosine function slightly outperforms others, making it the preferred choice in MaskGIT.<br>
+
+An observation is that more iterations don't always lead to a better performance. Each function used reahces a “sweet spot” in performance before declining again. Notably, the cosine function 
+not only scores the best overall but also reaches its peak performance earlier, between 8 to 12 iterations, compared to other functions.<br><br>
+
 <h2>Social Impact</h2> 
 
 <h4>Positive Societal Impacts:</h4>
-<ul><li>MASKGit have wide-ranging societal impacts on society, enhancing online experiences with personalized content, fostering creative expression, 
+<ul><li>MaskGIT have wide-ranging societal impacts on society, enhancing online experiences with personalized content, fostering creative expression, 
 and advancing healthcare with more accurate diagnostics. </li>
 <li>Can benefit education, cultural heritage preservation, and language translation, ultimately making digital content, creativity, healthcare, education, and cultural 
 engagement more accessible and meaningful to people in their everyday lives.</li></ul>
