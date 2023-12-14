@@ -324,29 +324,43 @@ into a fixed number of discrete codebook vectors.</li>
 
 
 
-<h2>Peer-Review</h2>
+<h2>Peer-Review - Rakshak</h2> <br>
 
 The paper introduces MaskGIT, a bidirectional transformer model for image synthesis. The model excels in various tasks, including class-conditional image synthesis, manipulation, and 
 extrapolation. It showcases significant improvements over existing methods in terms of quality, speed, and diversity of generated images. The model's iterative decoding method enhances 
-efficiency, requiring fewer steps compared to traditional autoregressive methods, and its bidirectional self-attention mechanism allows for richer context utilization.
+efficiency, requiring fewer steps compared to traditional autoregressive methods, and its bidirectional self-attention mechanism allows for richer context utilization.<br><br>
 
-<h4> Overall Score: 8.5/10 (Strong Accept)</h4>
+<h4> Overall Score: 7.5/10 (Strong Accept)</h4>
 
 <h4>Strengths</h4>
 
 <ul><li>MaskGIT's parallel decoding approach is a groundbreaking improvement over traditional sequential methods, significantly accelerating the image generation process.</li>
-<li>The paper is technically sound with well-supported claims. The experiments demonstrate MaskGIT's superiority over existing models in terms of image quality and synthesis speed.</li>
 <li>The paper presents a thorough analysis of the output quality and diversity, substantiated by metrics like FID and IS.</li>
-<li>The paper successfully covers the application of the model to a range of tasks, highlighting its versatility. This includes class-conditional synthesis, image manipulation, and extrapolation.</li>
 <li>The paper explores the limitations of the proposed model, especially in complex or edge-case scenarios, which is crucial for a balanced understanding.</li>
 </ul>
 
 <h4>Weaknesses</h4>
 
-<ul><li>The paper could provide a more thorough discussion of the model's limitations, particularly in scenarios with highly complex or unusual images.</li>
-  <li>The paper does not discusses the model's potential for negative societal impacts and it could provide more details on how these impacts could be mitigated.</li>
-  <li>The discussion on the scalability of the model and its ability to generalize across various datasets is not adequately covered.</li><br><br>
+<ul><li>The paper does not discusses the model's potential for negative societal impacts and it could provide more details on how these impacts could be mitigated.</li>
+  <li>The discussion on the scalability of the model and its ability to generalize across various datasets is not adequately covered.</li></ul><br><br>
 
+
+<h2>Peer-Review - Deepak</h2>
+
+<h4> Overall Score: 8/10 (Strong Accept)</h4>
+
+
+<h4>Strengths</h4>
+<ul><li>The paper introduces a novel approach to image synthesis, particularly in its use of bidirectional transformers for MVTM and its efficient parallel decoding technique.</li>
+  <li>Technically sound with well-supported claims. The experiments demonstrate MaskGIT's superiority over existing models in terms of image quality and synthesis speed. </li>
+  <li>The paper is clearly written and well-organized, particularly in explaining complex concepts like MVTM and iterative decoding.  </li>
+  <li>Demonstrated proficiency in a range of tasks (class-conditional synthesis, image manipulation, and extrapolation) indicates the model's versatility and wide applicability. </li>
+  </ul>
+
+<h4>Weaknesses</h4>
+
+<ul><li>There's a need for a more comprehensive exploration of the model's limitations and potential areas for improvement.</li>
+<li>The impact of MaskGIT in practical applications beyond the scope of the experiments could be more deeply explored to underline its significance.</li></ul><br><br>
 
 <h2>References</h2>
 
